@@ -41,11 +41,11 @@ class Meme:NSObject {
     }
     
     static var MemesArray:[Meme] {
+        
         var array = [Meme]()
         for item in Meme.getAllMemes() {
             array.append(Meme(dictionary:item))
         }
-        
         return array
     }
     

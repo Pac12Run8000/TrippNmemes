@@ -12,19 +12,30 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    var arrayOfMemes:[Meme] = [Meme]()
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        arrayOfMemes = Meme.MemesArray
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        delegate.memeArray = Meme.MemesArray
+        
+        
+       
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfMemes.count
+        if let memeArray = delegate.memeArray {
+            return memeArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -33,11 +44,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        let meme = arrayOfMemes[(indexPath as NSIndexPath).row]
-        cell?.textLabel?.text = meme.name
-        cell?.detailTextLabel?.text = meme.topText + " " + meme.bottomText
-        cell?.imageView?.image = UIImage(named: meme.image)
-        return cell!
+        if let memes = delegate.memeArray {
+            let meme = memes[(indexPath as NSIndexPath).row]
+            cell?.textLabel?.text = meme.name
+            cell?.detailTextLabel?.text = meme.topText + " " + meme.bottomText
+            cell?.imageView?.image = UIImage(named: meme.image)
+        }
+        return (cell)!
     }
     
 
