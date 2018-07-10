@@ -26,6 +26,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         
         delegate.memeArray = Meme.MemesArray
+//        delegate.memeArray?.remove(at: 0)
         
         
        
