@@ -12,15 +12,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+    var arrayOfMemes:[Meme] = [Meme]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        arrayOfMemes = Meme.MemesArray
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return arrayOfMemes.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -29,9 +33,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        cell?.textLabel?.text = "test"
-        cell?.detailTextLabel?.text = "run!"
-        cell?.imageView?.image = UIImage(named: "Burley")
+        let meme = arrayOfMemes[(indexPath as NSIndexPath).row]
+        cell?.textLabel?.text = meme.name
+        cell?.detailTextLabel?.text = meme.topText + " " + meme.bottomText
+        cell?.imageView?.image = UIImage(named: meme.image)
         return cell!
     }
     
