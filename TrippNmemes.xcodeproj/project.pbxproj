@@ -14,6 +14,7 @@
 		09A4635220F3A546002605F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A4635020F3A546002605F5 /* LaunchScreen.storyboard */; };
 		09A4635A20F3AAE9002605F5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4635920F3AAE9002605F5 /* CollectionViewController.swift */; };
 		09A4635F20F3B5AB002605F5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4635E20F3B5AB002605F5 /* Meme.swift */; };
+		09A4636120F530C9002605F5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4636020F530C9002605F5 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		09A4635320F3A546002605F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09A4635920F3AAE9002605F5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		09A4635E20F3B5AB002605F5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		09A4636020F530C9002605F5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				09A4634920F3A546002605F5 /* TableViewController.swift */,
 				09A4635920F3AAE9002605F5 /* CollectionViewController.swift */,
+				09A4636020F530C9002605F5 /* CustomTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A4635A20F3AAE9002605F5 /* CollectionViewController.swift in Sources */,
+				09A4636120F530C9002605F5 /* CustomTableViewCell.swift in Sources */,
 				09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */,
 				09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */,
 				09A4635F20F3B5AB002605F5 /* Meme.swift in Sources */,

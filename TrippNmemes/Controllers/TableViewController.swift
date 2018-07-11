@@ -26,11 +26,26 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         
         delegate.memeArray = Meme.MemesArray
-//        delegate.memeArray?.remove(at: 0)
-        
-        
-       
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            delegate.memeArray?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        default:
+            ()
+        }
+    }
+
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let memeArray = delegate.memeArray {
@@ -40,18 +55,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
         if let memes = delegate.memeArray {
             let meme = memes[(indexPath as NSIndexPath).row]
-            cell?.textLabel?.text = meme.name
-            cell?.detailTextLabel?.text = meme.topText + " " + meme.bottomText
-            cell?.imageView?.image = UIImage(named: meme.image)
+
+            cell.memeObj = meme
+
         }
-        return (cell)!
+        return cell
     }
     
 
