@@ -19,13 +19,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        delegate.memeArray = Meme.MemesArray
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
         
-        delegate.memeArray = Meme.MemesArray
+        
+        // Test if meme is equatable
+//        print(delegate.memeArray![0] == delegate.memeArray![3])
     }
     
     
@@ -72,4 +77,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 
 }
+
+// Meme Equatable definition syntax
+//extension TableViewController {}
+//
+//func ==(lhs: Meme, rhs: Meme) -> Bool {
+//    return lhs.topText == rhs.topText
+//}
 
