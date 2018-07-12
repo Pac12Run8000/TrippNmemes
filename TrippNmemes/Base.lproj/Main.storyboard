@@ -44,6 +44,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVX-fL-cIa">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="161"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-lG-S5Z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="161"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="P5L-ZB-zs4">
                                                     <rect key="frame" x="120" y="131" width="22" height="22"/>
                                                     <constraints>
@@ -53,16 +57,20 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.54650406309999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="aVX-fL-cIa" secondAttribute="trailing" id="0My-Hj-qYn"/>
                                             <constraint firstAttribute="bottom" secondItem="P5L-ZB-zs4" secondAttribute="bottom" constant="8" id="540-ix-M7Z"/>
                                             <constraint firstItem="aVX-fL-cIa" firstAttribute="top" secondItem="ESf-kd-C6j" secondAttribute="top" id="FPg-4w-N6V"/>
                                             <constraint firstItem="aVX-fL-cIa" firstAttribute="leading" secondItem="ESf-kd-C6j" secondAttribute="leading" id="JE4-26-B8J"/>
+                                            <constraint firstAttribute="bottom" secondItem="gmL-lG-S5Z" secondAttribute="bottom" id="Rxs-QY-OSM"/>
+                                            <constraint firstItem="gmL-lG-S5Z" firstAttribute="top" secondItem="ESf-kd-C6j" secondAttribute="top" id="YJb-Z5-0gO"/>
+                                            <constraint firstItem="gmL-lG-S5Z" firstAttribute="leading" secondItem="ESf-kd-C6j" secondAttribute="leading" id="bmf-Cs-xQn"/>
                                             <constraint firstAttribute="trailing" secondItem="P5L-ZB-zs4" secondAttribute="trailing" constant="8" id="crV-nK-g7g"/>
+                                            <constraint firstAttribute="trailing" secondItem="gmL-lG-S5Z" secondAttribute="trailing" id="eCW-RJ-j85"/>
                                             <constraint firstAttribute="bottom" secondItem="aVX-fL-cIa" secondAttribute="bottom" id="k3x-Dg-ehU"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="backgroundTintImage" destination="gmL-lG-S5Z" id="bPs-sR-BMo"/>
                                             <outlet property="imageView" destination="aVX-fL-cIa" id="GWH-Yz-ww1"/>
                                             <outlet property="selectionImageOutlet" destination="P5L-ZB-zs4" id="cg8-Mo-2cp"/>
                                         </connections>

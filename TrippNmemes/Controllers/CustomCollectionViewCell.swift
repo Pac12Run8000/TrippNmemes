@@ -10,6 +10,7 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var backgroundTintImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var selectionImageOutlet: UIImageView!
     
@@ -29,6 +30,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var isEditing:Bool = false {
         didSet {
             selectionImageOutlet.isHidden = !isEditing
+            backgroundTintImage.isHidden = !isEditing
         }
     }
     
