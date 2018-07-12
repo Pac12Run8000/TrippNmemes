@@ -20,4 +20,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 6
     }
     
+    var memeObj:Meme! {
+        didSet {
+            imageView.image = UIImage(named: memeObj.image)
+        }
+    }
+    
 }
