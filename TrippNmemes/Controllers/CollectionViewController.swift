@@ -12,6 +12,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var addBarButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -22,6 +24,32 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         flowLayoutSetUp()
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    @IBAction func deleteSelected() {
+        if let selected = collectionView.indexPathsForSelectedItems {
+            let items = selected.map { $0.item }.sorted().reversed()
+            for item in items {
+                delegate.memeArray?.remove(at: item)
+            }
+            collectionView.deleteItems(at: selected)
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        deleteBarButton.isEnabled = editing
+        addBarButtonOutlet.isEnabled = !editing
+        
+        collectionView.allowsMultipleSelection = editing
+        
+        let indexes = collectionView.indexPathsForVisibleItems
+        for index in indexes {
+            let cell = collectionView.cellForItem(at: index) as! CustomCollectionViewCell
+            cell.isEditing = editing
+        }
     }
     
     
@@ -38,8 +66,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let meme = delegate.memeArray![(indexPath as NSIndexPath).row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
+        cell.isEditing = isEditing
         cell.memeObj = meme
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isEditing {
+            print("boxer name:\(delegate.memeArray![indexPath.row].name)")
+        }
     }
     
 

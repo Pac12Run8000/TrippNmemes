@@ -11,7 +11,7 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var selectionImageOutlet: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +23,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var memeObj:Meme! {
         didSet {
             imageView.image = UIImage(named: memeObj.image)
+        }
+    }
+    
+    var isEditing:Bool = false {
+        didSet {
+            selectionImageOutlet.isHidden = !isEditing
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isEditing {
+                selectionImageOutlet.image = isSelected ? UIImage(named: "Checked") : UIImage(named: "Unchecked")
+            }
         }
     }
     

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,17 +44,27 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVX-fL-cIa">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="161"/>
                                                 </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="P5L-ZB-zs4">
+                                                    <rect key="frame" x="120" y="131" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="poN-62-nfm"/>
+                                                        <constraint firstAttribute="height" constant="22" id="xf0-dJ-6If"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.54650406309999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="aVX-fL-cIa" secondAttribute="trailing" id="0My-Hj-qYn"/>
+                                            <constraint firstAttribute="bottom" secondItem="P5L-ZB-zs4" secondAttribute="bottom" constant="8" id="540-ix-M7Z"/>
                                             <constraint firstItem="aVX-fL-cIa" firstAttribute="top" secondItem="ESf-kd-C6j" secondAttribute="top" id="FPg-4w-N6V"/>
                                             <constraint firstItem="aVX-fL-cIa" firstAttribute="leading" secondItem="ESf-kd-C6j" secondAttribute="leading" id="JE4-26-B8J"/>
+                                            <constraint firstAttribute="trailing" secondItem="P5L-ZB-zs4" secondAttribute="trailing" constant="8" id="crV-nK-g7g"/>
                                             <constraint firstAttribute="bottom" secondItem="aVX-fL-cIa" secondAttribute="bottom" id="k3x-Dg-ehU"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="aVX-fL-cIa" id="GWH-Yz-ww1"/>
+                                            <outlet property="selectionImageOutlet" destination="P5L-ZB-zs4" id="cg8-Mo-2cp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -68,9 +79,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jOq-wL-xDO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lDj-Kt-FHE"/>
+                    <navigationItem key="navigationItem" id="lDj-Kt-FHE">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="iqj-nX-zMt"/>
+                            <barButtonItem enabled="NO" systemItem="trash" id="nDk-M1-lhh">
+                                <connections>
+                                    <action selector="deleteSelected" destination="8fb-yA-gZt" id="Llk-pJ-IVd"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addBarButtonOutlet" destination="iqj-nX-zMt" id="ojd-cb-RQo"/>
                         <outlet property="collectionView" destination="M5F-UX-YGu" id="kCz-RJ-0Ih"/>
+                        <outlet property="deleteBarButton" destination="nDk-M1-lhh" id="e1n-E0-TIp"/>
                         <outlet property="flowLayout" destination="eSy-vA-Ca0" id="dag-c9-UYO"/>
                     </connections>
                 </viewController>
@@ -233,5 +255,6 @@
     </scenes>
     <resources>
         <image name="Burley" width="200" height="250"/>
+        <image name="Unchecked" width="22" height="22"/>
     </resources>
 </document>
