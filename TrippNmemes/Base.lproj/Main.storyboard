@@ -214,7 +214,7 @@
             </objects>
             <point key="canvasLocation" x="1101.5999999999999" y="-394.45277361319341"/>
         </scene>
-        <!--Meme Create View Controller-->
+        <!--Title-->
         <scene sceneID="EXg-3q-FDz">
             <objects>
                 <viewController id="LUj-Pc-vfO" customClass="MemeCreateViewController" customModule="TrippNmemes" customModuleProvider="target" sceneMemberID="viewController">
@@ -224,7 +224,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="O6r-0S-OhU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QVO-Im-BGx"/>
+                    <navigationItem key="navigationItem" title="Title" id="aeK-dA-FJW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KQ3-Yx-cqC">
+                            <connections>
+                                <action selector="cancelMeme:" destination="LUj-Pc-vfO" id="3aP-4p-ia6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bCi-9e-rNo"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCb-do-CKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
