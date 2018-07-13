@@ -16,6 +16,7 @@
 		09A4635F20F3B5AB002605F5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4635E20F3B5AB002605F5 /* Meme.swift */; };
 		09A4636120F530C9002605F5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4636020F530C9002605F5 /* CustomTableViewCell.swift */; };
 		09A4636320F723DF002605F5 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4636220F723DF002605F5 /* CustomCollectionViewCell.swift */; };
+		09A4636520F8D984002605F5 /* MemeCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4636420F8D984002605F5 /* MemeCreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		09A4635E20F3B5AB002605F5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		09A4636020F530C9002605F5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		09A4636220F723DF002605F5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		09A4636420F8D984002605F5 /* MemeCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				09A4635920F3AAE9002605F5 /* CollectionViewController.swift */,
 				09A4636020F530C9002605F5 /* CustomTableViewCell.swift */,
 				09A4636220F723DF002605F5 /* CustomCollectionViewCell.swift */,
+				09A4636420F8D984002605F5 /* MemeCreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */,
 				09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */,
 				09A4635F20F3B5AB002605F5 /* Meme.swift in Sources */,
+				09A4636520F8D984002605F5 /* MemeCreateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

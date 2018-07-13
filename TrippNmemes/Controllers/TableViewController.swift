@@ -33,13 +33,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        print(delegate.memeArray![0] == delegate.memeArray![3])
     }
     
-    
-    
-    
-    
-    
-    
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
@@ -64,7 +57,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         if let memes = delegate.memeArray {
             let meme = memes[(indexPath as NSIndexPath).row]
 

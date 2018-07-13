@@ -89,7 +89,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="lDj-Kt-FHE">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="iqj-nX-zMt"/>
+                            <barButtonItem systemItem="add" id="iqj-nX-zMt">
+                                <connections>
+                                    <segue destination="LUj-Pc-vfO" kind="show" id="2gh-Uy-Xpv"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="trash" id="nDk-M1-lhh">
                                 <connections>
                                     <action selector="deleteSelected" destination="8fb-yA-gZt" id="Llk-pJ-IVd"/>
@@ -195,7 +199,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j6G-3r-8Kb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oe6-tG-sOF"/>
+                    <navigationItem key="navigationItem" id="oe6-tG-sOF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="w5C-fi-HM3">
+                            <connections>
+                                <segue destination="LUj-Pc-vfO" kind="show" id="Mrk-TF-2iK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2Zc-BX-2Vs" id="pZk-D8-Oov"/>
                     </connections>
@@ -203,6 +213,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lZ-IF-lbM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1101.5999999999999" y="-394.45277361319341"/>
+        </scene>
+        <!--Meme Create View Controller-->
+        <scene sceneID="EXg-3q-FDz">
+            <objects>
+                <viewController id="LUj-Pc-vfO" customClass="MemeCreateViewController" customModule="TrippNmemes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bgK-9Y-ePB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="O6r-0S-OhU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QVO-Im-BGx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RCb-do-CKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2266" y="-394"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A1I-1c-Lsj">
@@ -265,4 +291,7 @@
         <image name="Burley" width="200" height="250"/>
         <image name="Unchecked" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2gh-Uy-Xpv"/>
+    </inferredMetricsTieBreakers>
 </document>
