@@ -10,26 +10,37 @@ import UIKit
 
 protocol MemeCreateViewControllerDelegate:class {
     func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController)
-    func addMemeViewControllere(_ controller:MemeCreateViewController, didFinishAdding item:Meme)
+    func addMemeViewController(_ controller:MemeCreateViewController, didFinishAdding item:Meme)
+    func addMemeViewController(_ controller:MemeCreateViewController, didFinishEditing item:Meme)
+    
 }
 
 class MemeCreateViewController: UIViewController, UITextFieldDelegate {
     
     weak var memeCreateViewControllerDelegate:MemeCreateViewControllerDelegate?
     
-    
+    var memeToEdit:Meme?
 
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var doneButtonOutlet: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
         topTextField.delegate = self
         bottomTextField.delegate = self
-        // Do any additional setup after loading the view.
+        
+        if let meme = memeToEdit {
+            title = meme.name
+            nameTextField.text = meme.name
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            
+        }
+        doneButtonOutlet.isEnabled = true
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
@@ -46,14 +57,24 @@ class MemeCreateViewController: UIViewController, UITextFieldDelegate {
         memeCreateViewControllerDelegate?.addMemeViewControllerDidCancel(self)
     }
     @IBAction func doneButtonAction(_ sender: Any) {
-        let meme = Meme()
-        meme.name = nameTextField.text!
-        meme.bottomText = bottomTextField.text!
-        meme.topText = topTextField.text!
         
-        memeCreateViewControllerDelegate?.addMemeViewControllere(self, didFinishAdding: meme)
-
-        navigationController?.popViewController(animated: true)
+        if let memeToEdit = memeToEdit {
+            memeToEdit.name = nameTextField.text!
+            memeToEdit.topText = topTextField.text!
+            memeToEdit.bottomText = bottomTextField.text!
+            memeToEdit.image = "Burley"
+            memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishEditing: memeToEdit)
+        } else {
+            let meme = Meme()
+            meme.name = nameTextField.text!
+            meme.bottomText = bottomTextField.text!
+            meme.topText = topTextField.text!
+            
+            memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishAdding: meme)
+            
+            navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     /*

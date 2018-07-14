@@ -73,6 +73,7 @@
                                             <outlet property="backgroundTintImage" destination="gmL-lG-S5Z" id="bPs-sR-BMo"/>
                                             <outlet property="imageView" destination="aVX-fL-cIa" id="GWH-Yz-ww1"/>
                                             <outlet property="selectionImageOutlet" destination="P5L-ZB-zs4" id="cg8-Mo-2cp"/>
+                                            <segue destination="LUj-Pc-vfO" kind="show" identifier="EditCollectionView" id="w4J-vI-jNj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -185,6 +186,7 @@
                                             <outlet property="customImage" destination="fX5-Wk-qE9" id="na8-fH-nWw"/>
                                             <outlet property="nameText" destination="sLX-c4-6HV" id="OBx-Pe-v3F"/>
                                             <outlet property="topText" destination="c8f-Ln-Ra0" id="JIY-bD-LrJ"/>
+                                            <segue destination="LUj-Pc-vfO" kind="show" identifier="EditTableView" id="96D-ND-fJP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -317,7 +319,7 @@
                                 <action selector="cancelMeme:" destination="LUj-Pc-vfO" id="3aP-4p-ia6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bCi-9e-rNo">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="bCi-9e-rNo">
                             <connections>
                                 <action selector="doneButtonAction:" destination="LUj-Pc-vfO" id="s6U-SI-P1V"/>
                             </connections>
@@ -325,6 +327,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="bEN-ST-IbT" id="pwE-zZ-KcR"/>
+                        <outlet property="doneButtonOutlet" destination="bCi-9e-rNo" id="Gtm-g9-Pv0"/>
                         <outlet property="nameTextField" destination="44s-Ot-Voy" id="BG9-BR-jdi"/>
                         <outlet property="topTextField" destination="3Jw-gj-eV7" id="odp-b4-4LH"/>
                     </connections>
@@ -395,6 +398,6 @@
         <image name="Unchecked" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mrk-TF-2iK"/>
+        <segue reference="96D-ND-fJP"/>
     </inferredMetricsTieBreakers>
 </document>

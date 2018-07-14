@@ -13,9 +13,20 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         navigationController?.popViewController(animated: true)
     }
     
-    func addMemeViewControllere(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
+    func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
         delegate.memeArray?.append(item)
         print("item:\(item.name)")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
+        if let index = delegate.memeArray?.index(of: item) {
+            let meme = delegate.memeArray![index]
+            meme.name = item.name
+            meme.image = item.image
+            meme.bottomText = item.bottomText
+            meme.topText = item.topText
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -91,10 +102,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         if segue.identifier == "AddCollectionView" {
             let controller = segue.destination as! MemeCreateViewController
             controller.memeCreateViewControllerDelegate = self
+        } else if segue.identifier == "EditCollectionView" {
+            let controller = segue.destination as! MemeCreateViewController
+            controller.memeCreateViewControllerDelegate = self
+            if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
+                controller.memeToEdit = delegate.memeArray?[indexPath.row]
+            }
         }
-        
-        
     }
+    
     
 
     

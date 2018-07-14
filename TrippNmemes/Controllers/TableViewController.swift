@@ -14,8 +14,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         navigationController?.popViewController(animated: true)
     }
     
-    func addMemeViewControllere(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
+    func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
         delegate.memeArray?.append(item)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
+        if let index = delegate.memeArray?.index(of: item) {
+            let meme = delegate.memeArray![index]
+                meme.name = item.name
+                meme.image = "Burley"
+                meme.bottomText = item.bottomText
+                meme.topText = item.topText
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -46,6 +57,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "AddTableView" {
             let controller = segue.destination as! MemeCreateViewController
             controller.memeCreateViewControllerDelegate = self
+        } else if segue.identifier == "EditTableView" {
+            let controller = segue.destination as! MemeCreateViewController
+            controller.memeCreateViewControllerDelegate = self
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.memeToEdit = delegate.memeArray?[indexPath.row]
+                
+                print("memeToEdit:\(delegate.memeArray![indexPath.row].name)")
+            }
         }
     }
     
