@@ -8,13 +8,20 @@
 
 import UIKit
 
-class MemeCreateViewController: UIViewController {
+class MemeCreateViewController: UIViewController, UITextFieldDelegate {
     
     
-
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameTextField.delegate = self
+        topTextField.delegate = self
+        bottomTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -28,7 +35,16 @@ class MemeCreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelMeme(_ sender: Any) { navigationController?.popViewController(animated: true)
+    @IBAction func cancelMeme(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func doneButtonAction(_ sender: Any) {
+//        let meme = Meme()
+//        meme.name = nameTextField.text!
+//        meme.bottomText = bottomTextField.text!
+//        meme.topText = topTextField.text!
+//        delegate.memeArray?.append(meme)
+        navigationController?.popViewController(animated: true)
     }
     
     /*
