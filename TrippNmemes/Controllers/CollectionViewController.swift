@@ -97,6 +97,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             print("boxer name:\(delegate.memeArray![indexPath.row].name)")
         }
     }
+    // MARK: stops collectionView from performing segue in isEditing Mode
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if isEditing {
+            return false
+        }
+        return true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddCollectionView" {
