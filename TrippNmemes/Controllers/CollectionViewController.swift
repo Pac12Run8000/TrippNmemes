@@ -8,7 +8,17 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeCreateViewControllerDelegate {
+    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addMemeViewControllere(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
+        delegate.memeArray?.append(item)
+        print("item:\(item.name)")
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -75,6 +85,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         if !isEditing {
             print("boxer name:\(delegate.memeArray![indexPath.row].name)")
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddCollectionView" {
+            let controller = segue.destination as! MemeCreateViewController
+            controller.memeCreateViewControllerDelegate = self
+        }
+        
+        
     }
     
 

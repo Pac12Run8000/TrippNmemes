@@ -8,7 +8,16 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MemeCreateViewControllerDelegate {
+    
+    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addMemeViewControllere(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
+        delegate.memeArray?.append(item)
+        navigationController?.popViewController(animated: true)
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +40,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // Test if meme is equatable
 //        print(delegate.memeArray![0] == delegate.memeArray![3])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddTableView" {
+            let controller = segue.destination as! MemeCreateViewController
+            controller.memeCreateViewControllerDelegate = self
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

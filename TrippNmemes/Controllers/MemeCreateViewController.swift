@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol MemeCreateViewControllerDelegate:class {
+    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController)
+    func addMemeViewControllere(_ controller:MemeCreateViewController, didFinishAdding item:Meme)
+}
+
 class MemeCreateViewController: UIViewController, UITextFieldDelegate {
     
+    weak var memeCreateViewControllerDelegate:MemeCreateViewControllerDelegate?
     
-    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var topTextField: UITextField!
@@ -36,14 +43,16 @@ class MemeCreateViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelMeme(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        memeCreateViewControllerDelegate?.addMemeViewControllerDidCancel(self)
     }
     @IBAction func doneButtonAction(_ sender: Any) {
-//        let meme = Meme()
-//        meme.name = nameTextField.text!
-//        meme.bottomText = bottomTextField.text!
-//        meme.topText = topTextField.text!
-//        delegate.memeArray?.append(meme)
+        let meme = Meme()
+        meme.name = nameTextField.text!
+        meme.bottomText = bottomTextField.text!
+        meme.topText = topTextField.text!
+        
+        memeCreateViewControllerDelegate?.addMemeViewControllere(self, didFinishAdding: meme)
+
         navigationController?.popViewController(animated: true)
     }
     

@@ -91,7 +91,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="iqj-nX-zMt">
                                 <connections>
-                                    <segue destination="LUj-Pc-vfO" kind="show" id="2gh-Uy-Xpv"/>
+                                    <segue destination="LUj-Pc-vfO" kind="show" identifier="AddCollectionView" id="2gh-Uy-Xpv"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="trash" id="nDk-M1-lhh">
@@ -202,7 +202,7 @@
                     <navigationItem key="navigationItem" id="oe6-tG-sOF">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w5C-fi-HM3">
                             <connections>
-                                <segue destination="LUj-Pc-vfO" kind="show" id="Mrk-TF-2iK"/>
+                                <segue destination="LUj-Pc-vfO" kind="show" identifier="AddTableView" id="Mrk-TF-2iK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
