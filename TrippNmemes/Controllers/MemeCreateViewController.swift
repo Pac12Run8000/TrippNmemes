@@ -34,8 +34,8 @@ class MemeCreateViewController: UIViewController, UITextFieldDelegate {
         bottomTextField.delegate = self
         
         if let meme = memeToEdit {
-            title = meme.name
-            nameTextField.text = meme.name
+            title = meme.memedImage
+            nameTextField.text = meme.memedImage
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
             
@@ -59,14 +59,14 @@ class MemeCreateViewController: UIViewController, UITextFieldDelegate {
     @IBAction func doneButtonAction(_ sender: Any) {
         
         if let memeToEdit = memeToEdit {
-            memeToEdit.name = nameTextField.text!
+            memeToEdit.memedImage = nameTextField.text!
             memeToEdit.topText = topTextField.text!
             memeToEdit.bottomText = bottomTextField.text!
-            memeToEdit.image = "Burley"
+            memeToEdit.originalImage = "Burley"
             memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishEditing: memeToEdit)
         } else {
             let meme = Meme()
-            meme.name = nameTextField.text!
+            meme.memedImage = nameTextField.text!
             meme.bottomText = bottomTextField.text!
             meme.topText = topTextField.text!
             

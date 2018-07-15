@@ -15,15 +15,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
         delegate.memeArray?.append(item)
-        print("item:\(item.name)")
+        print("item:\(item.memedImage)")
         navigationController?.popViewController(animated: true)
     }
     
     func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
         if let index = delegate.memeArray?.index(of: item) {
             let meme = delegate.memeArray![index]
-            meme.name = item.name
-            meme.image = item.image
+            meme.memedImage = item.memedImage
+            meme.originalImage = item.originalImage
             meme.bottomText = item.bottomText
             meme.topText = item.topText
         }
@@ -94,7 +94,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            print("boxer name:\(delegate.memeArray![indexPath.row].name)")
+            print("boxer name:\(delegate.memeArray![indexPath.row].memedImage)")
         }
     }
     // MARK: stops collectionView from performing segue in isEditing Mode

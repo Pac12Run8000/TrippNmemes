@@ -23,7 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     var memeObj:Meme! {
         didSet {
-            imageView.image = UIImage(named: memeObj.image)
+            imageView.image = UIImage(named: memeObj.originalImage)
         }
     }
     
