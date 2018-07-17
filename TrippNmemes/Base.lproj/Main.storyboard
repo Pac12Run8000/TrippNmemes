@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNb-oQ-kI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101.5999999999999" y="271.21439280359823"/>
+            <point key="canvasLocation" x="1002" y="450"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="59F-pQ-dsc">
@@ -204,7 +204,7 @@
                     <navigationItem key="navigationItem" id="oe6-tG-sOF">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w5C-fi-HM3">
                             <connections>
-                                <segue destination="LUj-Pc-vfO" kind="show" identifier="AddTableView" id="Mrk-TF-2iK"/>
+                                <segue destination="Dtc-lV-3y1" kind="show" id="L3e-Sv-3Re"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -335,6 +335,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCb-do-CKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2264.8000000000002" y="-394.45277361319341"/>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="7hD-5v-BXR">
+            <objects>
+                <viewController id="Dtc-lV-3y1" customClass="MemeGeneratorViewController" customModule="TrippNmemes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K2O-AZ-Ies">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-IR-muG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-PW-ddu">
+                                <rect key="frame" x="0.0" y="69" width="375" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="mlc-iA-Uce"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-Fe-UQq">
+                                <rect key="frame" x="0.0" y="543" width="375" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="9gY-5f-jQ6"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.43137254899999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="khe-t1-e9P" firstAttribute="trailing" secondItem="qMZ-IR-muG" secondAttribute="trailing" id="3nz-N5-Zga"/>
+                            <constraint firstItem="dkk-Fe-UQq" firstAttribute="leading" secondItem="khe-t1-e9P" secondAttribute="leading" id="7XW-4E-U6O"/>
+                            <constraint firstItem="hgn-PW-ddu" firstAttribute="top" secondItem="khe-t1-e9P" secondAttribute="top" constant="5" id="7oB-mT-JNq"/>
+                            <constraint firstItem="hgn-PW-ddu" firstAttribute="leading" secondItem="khe-t1-e9P" secondAttribute="leading" id="DCl-c3-Tp7"/>
+                            <constraint firstItem="khe-t1-e9P" firstAttribute="trailing" secondItem="hgn-PW-ddu" secondAttribute="trailing" id="Puz-1N-dCy"/>
+                            <constraint firstItem="qMZ-IR-muG" firstAttribute="top" secondItem="khe-t1-e9P" secondAttribute="top" id="TWe-Kr-Vsl"/>
+                            <constraint firstItem="khe-t1-e9P" firstAttribute="trailing" secondItem="dkk-Fe-UQq" secondAttribute="trailing" id="dnw-Lx-Zb9"/>
+                            <constraint firstItem="qMZ-IR-muG" firstAttribute="leading" secondItem="khe-t1-e9P" secondAttribute="leading" id="n1N-as-Zho"/>
+                            <constraint firstItem="khe-t1-e9P" firstAttribute="bottom" secondItem="dkk-Fe-UQq" secondAttribute="bottom" id="s1L-vh-fpG"/>
+                            <constraint firstItem="khe-t1-e9P" firstAttribute="bottom" secondItem="qMZ-IR-muG" secondAttribute="bottom" id="sEC-bT-qSW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="khe-t1-e9P"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photos" id="72v-7j-8dG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0rA-ys-Pan">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="Dtc-lV-3y1" id="D6a-6C-4aF"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="organize" id="Qlx-vQ-xE7">
+                                <connections>
+                                    <action selector="pickPhotoFromLibraray:" destination="Dtc-lV-3y1" id="Z59-xS-oBX"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="b14-dw-UOQ">
+                                <connections>
+                                    <action selector="pickPhotoFromCamera:" destination="Dtc-lV-3y1" id="Y51-xv-bhm"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomTextField" destination="dkk-Fe-UQq" id="rRj-tQ-Gwz"/>
+                        <outlet property="cameraButtonOutlet" destination="b14-dw-UOQ" id="fp6-wL-r59"/>
+                        <outlet property="imageView" destination="qMZ-IR-muG" id="v6r-87-Hbh"/>
+                        <outlet property="topTextField" destination="hgn-PW-ddu" id="jJ8-PC-1LY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AEK-kc-f1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A1I-1c-Lsj">
