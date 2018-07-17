@@ -382,11 +382,19 @@
                         <viewLayoutGuide key="safeArea" id="khe-t1-e9P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="72v-7j-8dG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0rA-ys-Pan">
-                            <connections>
-                                <action selector="cancelButtonAction:" destination="Dtc-lV-3y1" id="D6a-6C-4aF"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="cancel" id="0rA-ys-Pan">
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="Dtc-lV-3y1" id="D6a-6C-4aF"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="save" id="WgX-h6-S2S"/>
+                            <barButtonItem title="Clear" id="H9V-jC-Dgy">
+                                <connections>
+                                    <action selector="clearImageAction:" destination="Dtc-lV-3y1" id="YWS-Ma-LGj"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="organize" id="Qlx-vQ-xE7">
                                 <connections>
@@ -403,7 +411,9 @@
                     <connections>
                         <outlet property="bottomTextField" destination="dkk-Fe-UQq" id="rRj-tQ-Gwz"/>
                         <outlet property="cameraButtonOutlet" destination="b14-dw-UOQ" id="fp6-wL-r59"/>
+                        <outlet property="clearButtonOutlet" destination="H9V-jC-Dgy" id="n9T-Yx-I5A"/>
                         <outlet property="imageView" destination="qMZ-IR-muG" id="v6r-87-Hbh"/>
+                        <outlet property="saveButtonOutlet" destination="WgX-h6-S2S" id="Ucf-v9-lc2"/>
                         <outlet property="topTextField" destination="hgn-PW-ddu" id="jJ8-PC-1LY"/>
                     </connections>
                 </viewController>

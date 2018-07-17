@@ -14,6 +14,8 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var clearButtonOutlet: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +27,26 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         setTextField(topTextField)
         setTextField(bottomTextField)
         subscribeToKeyboardNotifications()
+        saveButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+        clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+
+    }
+    
+    func shouldButtonBeEnabledBasedOnImageView() -> Bool {
+        return imageView.image == nil ? false : true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications()
     }
+    
+    @IBAction func clearImageAction(_ sender: Any) {
+        imageView.image = nil
+        saveButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+        clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+    }
+    
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
