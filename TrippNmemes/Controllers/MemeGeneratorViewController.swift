@@ -16,7 +16,7 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
-    @IBOutlet weak var clearButtonOutlet: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,6 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         setTextField(bottomTextField)
         subscribeToKeyboardNotifications()
         shareButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
-        clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
-        
         
     }
     
@@ -43,11 +41,7 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         unsubscribeToKeyboardNotifications()
     }
     
-    @IBAction func clearImageAction(_ sender: Any) {
-        imageView.image = nil
-        shareButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
-        clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
-    }
+    
     
     
     @IBAction func cancelButtonAction(_ sender: Any) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */; };
+		0999506120FE3B14005D83B4 /* MemeObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999506020FE3B14005D83B4 /* MemeObj.swift */; };
 		09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634720F3A546002605F5 /* AppDelegate.swift */; };
 		09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634920F3A546002605F5 /* TableViewController.swift */; };
 		09A4634D20F3A546002605F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A4634B20F3A546002605F5 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorViewController.swift; sourceTree = "<group>"; };
+		0999506020FE3B14005D83B4 /* MemeObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeObj.swift; sourceTree = "<group>"; };
 		09A4634420F3A546002605F5 /* TrippNmemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrippNmemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A4634720F3A546002605F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A4634920F3A546002605F5 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				09A4635E20F3B5AB002605F5 /* Meme.swift */,
+				0999506020FE3B14005D83B4 /* MemeObj.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */,
 				09A4636120F530C9002605F5 /* CustomTableViewCell.swift in Sources */,
 				09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */,
+				0999506120FE3B14005D83B4 /* MemeObj.swift in Sources */,
 				09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */,
 				09A4635F20F3B5AB002605F5 /* Meme.swift in Sources */,
 				09A4636520F8D984002605F5 /* MemeCreateViewController.swift in Sources */,
@@ -316,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 93TAG27MAJ;
 				INFOPLIST_FILE = TrippNmemes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GroverTech.TrippNmemes;
@@ -333,7 +337,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 93TAG27MAJ;
 				INFOPLIST_FILE = TrippNmemes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GroverTech.TrippNmemes;

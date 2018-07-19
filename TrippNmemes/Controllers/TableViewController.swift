@@ -40,8 +40,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Move this to the AppDelegate file
-        delegate.memeArray = Meme.MemesArray
+        
     }
 
     
