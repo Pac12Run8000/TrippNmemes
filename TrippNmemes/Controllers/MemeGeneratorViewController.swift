@@ -9,12 +9,13 @@
 import UIKit
 
 class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
-
+    
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var clearButtonOutlet: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -27,9 +28,10 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         setTextField(topTextField)
         setTextField(bottomTextField)
         subscribeToKeyboardNotifications()
-        saveButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+        shareButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
         clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
-
+        
+        
     }
     
     func shouldButtonBeEnabledBasedOnImageView() -> Bool {
@@ -43,7 +45,7 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func clearImageAction(_ sender: Any) {
         imageView.image = nil
-        saveButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
+        shareButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
         clearButtonOutlet.isEnabled = shouldButtonBeEnabledBasedOnImageView()
     }
     
@@ -148,4 +150,34 @@ extension MemeGeneratorViewController {
     }
     
 
+}
+
+// MARK: This functionality is for creating a Meme
+extension MemeGeneratorViewController {
+    
+    
+    // MARK: Save function adds the meme the [MemeObj]
+    func save(_ memeImage:UIImage) {
+        
+        if let meme = memeImage as? UIImage {
+            print("there is a meme image")
+        }
+    }
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        let myCustomMeme = MemeObj.generateMemedImage(self)
+        let avc = UIActivityViewController(activityItems: [myCustomMeme], applicationActivities: nil)
+        present(avc, animated: true, completion: nil)
+        avc.completionWithItemsHandler = {
+            activity, completion, items, err in
+            if completion {
+                self.save(myCustomMeme)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    
+
+    
 }
