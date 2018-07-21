@@ -13,11 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var memeArray: [Meme]?
+    
+    // Array for the new modified MemeObj
+    var memeObjArray: [MemeObj]?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         memeArray = Meme.MemesArray
+        
+        memeObjArray = [MemeObj]()
         
         return true
     }

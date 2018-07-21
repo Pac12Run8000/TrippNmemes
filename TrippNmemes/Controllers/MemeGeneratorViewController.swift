@@ -17,6 +17,8 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
     
+    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,11 +153,15 @@ extension MemeGeneratorViewController {
     
     
     // MARK: Save function adds the meme the [MemeObj]
-    func save(_ memeImage:UIImage) {
+    func save(_ originalImage:UIImage, _ memedImage:UIImage) {
         
-        if let meme = memeImage as? UIImage {
-            print("there is a meme image")
-        }
+        let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: memedImage)
+        appdelegate.memeObjArray?.append(generatedMeme)
+        
+//        for item in appdelegate.memeObjArray! {
+//            print("toptext: \(item.topText), count: \(String(describing: appdelegate.memeObjArray?.count))")
+//        }
+        
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
@@ -165,7 +171,11 @@ extension MemeGeneratorViewController {
         avc.completionWithItemsHandler = {
             activity, completion, items, err in
             if completion {
-                self.save(myCustomMeme)
+                if let originalImage = self.imageView.image {
+                    self.save(originalImage, myCustomMeme)
+                } else {
+                    print("There is no selected image.")
+                }
                 self.navigationController?.popViewController(animated: true)
             }
         }
