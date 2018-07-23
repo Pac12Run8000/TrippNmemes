@@ -13,19 +13,18 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var customImage: UIImageView!
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
-    @IBOutlet weak var nameText: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    var memeObj:Meme! {
+    var memeObj:MemeObj! {
         didSet {
-           customImage.image = UIImage(named: memeObj.originalImage)
+           customImage.image = memeObj.originalImage
             topText.text = memeObj.topText
             bottomText.text = memeObj.bottomText
-            nameText.text = memeObj.memedImage
+            
         }
     }
     
