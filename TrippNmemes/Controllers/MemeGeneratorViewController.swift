@@ -8,6 +8,15 @@
 
 import UIKit
 
+
+protocol MemeGeneratorViewControllerDelegate:class {
+    
+    func memeGeneratorViewControllerDidCancel(_ controller:MemeGeneratorViewController)
+    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishAdding item:MemeObj)
+    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishEditing item:MemeObj)
+    
+}
+
 class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -17,11 +26,24 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
     
+    var memeToEdit:MemeObj? 
+    
+    
     let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    weak var memeGeneratorDelegate:MemeGeneratorViewControllerDelegate?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.contentMode = .scaleAspectFill
+        
+        if let memeObj = memeToEdit {
+            topTextField.text = memeObj.topText
+            bottomTextField.text = memeObj.bottomText
+            imageView.image = memeObj.originalImage
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +69,8 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func cancelButtonAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        memeGeneratorDelegate?.memeGeneratorViewControllerDidCancel(self)
     }
     
     @IBAction func pickPhotoFromLibraray(_ sender: Any) {
@@ -152,11 +175,40 @@ extension MemeGeneratorViewController {
 extension MemeGeneratorViewController {
     
     
+//    if let memeToEdit = memeToEdit {
+//        memeToEdit.memedImage = nameTextField.text!
+//        memeToEdit.topText = topTextField.text!
+//        memeToEdit.bottomText = bottomTextField.text!
+//        memeToEdit.originalImage = "Burley"
+//        memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishEditing: memeToEdit)
+//    } else {
+//    let meme = Meme()
+//    meme.memedImage = nameTextField.text!
+//    meme.bottomText = bottomTextField.text!
+//    meme.topText = topTextField.text!
+//
+//    memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishAdding: meme)
+//
+//    navigationController?.popViewController(animated: true)
+//    }
+    
+    
     // MARK: Save function adds the meme the [MemeObj]
     func save(_ originalImage:UIImage, _ memedImage:UIImage) {
         
-        let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: memedImage)
-        appdelegate.memeObjArray?.append(generatedMeme)
+        if let memeToEdit = memeToEdit {
+            memeToEdit.topText = topTextField.text!
+            memeToEdit.bottomText = bottomTextField.text!
+            memeToEdit.originalImage = imageView.image!
+            memeToEdit.memedImage = memedImage
+            memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
+        } else {
+            let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: memedImage)
+            memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
+        }
+        
+        
+//        appdelegate.memeObjArray?.append(generatedMeme)
         
 //        for item in appdelegate.memeObjArray! {
 //            print("toptext: \(item.topText), count: \(String(describing: appdelegate.memeObjArray?.count))")
