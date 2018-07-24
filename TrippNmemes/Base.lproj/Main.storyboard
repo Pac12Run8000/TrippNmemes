@@ -86,11 +86,13 @@
                     <navigationItem key="navigationItem" id="lDj-Kt-FHE">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="iqj-nX-zMt">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="Dtc-lV-3y1" kind="show" identifier="AddCollectionView" id="mtg-77-okA"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="trash" id="nDk-M1-lhh">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="deleteSelected" destination="8fb-yA-gZt" id="Llk-pJ-IVd"/>
                                 </connections>
@@ -106,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNb-oQ-kI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1002" y="450"/>
+            <point key="canvasLocation" x="1102" y="272"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="59F-pQ-dsc">
@@ -118,7 +120,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Zc-BX-2Vs">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.55294117649999996" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.85490196078431369" green="0.82352941176470584" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="154" id="c1B-av-NDp" customClass="CustomTableViewCell" customModule="TrippNmemes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="154"/>
@@ -185,6 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oe6-tG-sOF">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w5C-fi-HM3">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="Dtc-lV-3y1" kind="show" identifier="AddTableView" id="L3e-Sv-3Re"/>
                             </connections>
@@ -246,11 +250,13 @@
                     <navigationItem key="navigationItem" title="Photos" id="72v-7j-8dG">
                         <leftBarButtonItems>
                             <barButtonItem systemItem="cancel" id="0rA-ys-Pan">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="cancelButtonAction:" destination="Dtc-lV-3y1" id="D6a-6C-4aF"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="WgX-h6-S2S">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="shareButtonAction:" destination="Dtc-lV-3y1" id="pRd-60-50y"/>
                                 </connections>
@@ -258,11 +264,13 @@
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="organize" id="Qlx-vQ-xE7">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="pickPhotoFromLibraray:" destination="Dtc-lV-3y1" id="Z59-xS-oBX"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="camera" id="b14-dw-UOQ">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="pickPhotoFromCamera:" destination="Dtc-lV-3y1" id="Y51-xv-bhm"/>
                                 </connections>
@@ -279,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEK-kc-f1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388" y="494"/>
+            <point key="canvasLocation" x="2418" y="-9"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A1I-1c-Lsj">
@@ -289,6 +297,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.3803921569" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="z3i-y0-5Nn" kind="relationship" relationship="viewControllers" id="7RJ-gb-iMQ"/>
@@ -303,11 +313,12 @@
         <scene sceneID="0z5-1f-JjH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z3i-y0-5Nn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="N70-nH-Ajf"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table_30x30" id="N70-nH-Ajf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6N7-dF-Jyk">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2627450980392157" green="0.38039215686274508" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -322,11 +333,12 @@
         <scene sceneID="Qq9-d5-ueN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="biC-rX-5ah" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="Sog-uC-eWE"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="collection_30x30" id="Sog-uC-eWE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="agQ-r2-16F">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.078431372549019607" green="0.38039215686274508" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -340,8 +352,10 @@
     </scenes>
     <resources>
         <image name="Unchecked" width="22" height="22"/>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mtg-77-okA"/>
+        <segue reference="5Uj-Y0-aQc"/>
     </inferredMetricsTieBreakers>
 </document>

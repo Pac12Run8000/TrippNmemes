@@ -46,6 +46,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         flowLayoutSetUp()
         
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
     
     @IBAction func deleteSelected() {
