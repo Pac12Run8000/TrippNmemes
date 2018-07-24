@@ -9,6 +9,7 @@
 import UIKit
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeGeneratorViewControllerDelegate {
+    
     func memeGeneratorViewControllerDidCancel(_ controller: MemeGeneratorViewController) {
         navigationController?.popViewController(animated: true)
     }
@@ -27,39 +28,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             memeObj.memedImage = item.memedImage
         }
         navigationController?.popViewController(animated: true)
-        
-//        if let index = delegate.memeObjArray?.index(of: item) {
-//            let memeObj = delegate.memeObjArray![index]
-//            memeObj.topText = item.topText
-//            memeObj.bottomText = item.bottomText
-//            memeObj.originalImage = item.originalImage
-//            memeObj.memedImage = item.memedImage
-//        }
-//        navigationController?.popViewController(animated: true)
-        
     }
-    
-//    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController) {
-//        navigationController?.popViewController(animated: true)
-//    }
-//
-//    func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
-//        delegate.memeArray?.append(item)
-//        print("item:\(item.memedImage)")
-//        navigationController?.popViewController(animated: true)
-//    }
-//
-//    func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
-//        if let index = delegate.memeArray?.index(of: item) {
-//            let meme = delegate.memeArray![index]
-//            meme.memedImage = item.memedImage
-//            meme.originalImage = item.originalImage
-//            meme.bottomText = item.bottomText
-//            meme.topText = item.topText
-//        }
-//        navigationController?.popViewController(animated: true)
-//    }
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -103,8 +72,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
@@ -130,6 +97,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             print("boxer name:\(delegate.memeObjArray![indexPath.row].memedImage)")
         }
     }
+    
     // MARK: stops collectionView from performing segue in isEditing Mode
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if isEditing {
@@ -150,26 +118,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AddCollectionView" {
-//            let controller = segue.destination as! MemeCreateViewController
-//            controller.memeCreateViewControllerDelegate = self
-//        } else if segue.identifier == "EditCollectionView" {
-//            let controller = segue.destination as! MemeCreateViewController
-//            controller.memeCreateViewControllerDelegate = self
-//            if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-//                controller.memeToEdit = delegate.memeArray?[indexPath.row]
-//            }
-//        }
-//    }
-    
-    
 
-    
 
 }
 
+
+// MARK: Setup the flowlayout
 extension CollectionViewController {
     
     func flowLayoutSetUp() {
