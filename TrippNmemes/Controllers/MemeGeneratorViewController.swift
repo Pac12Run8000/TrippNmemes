@@ -69,7 +69,6 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func cancelButtonAction(_ sender: Any) {
-//        navigationController?.popViewController(animated: true)
         memeGeneratorDelegate?.memeGeneratorViewControllerDidCancel(self)
     }
     

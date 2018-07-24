@@ -19,11 +19,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.layer.borderWidth = 3
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 6
+        imageView.contentMode = .scaleAspectFill
     }
     
-    var memeObj:Meme! {
+    var memeObj:MemeObj! {
         didSet {
-            imageView.image = UIImage(named: memeObj.originalImage)
+            imageView.image = memeObj.memedImage
         }
     }
     

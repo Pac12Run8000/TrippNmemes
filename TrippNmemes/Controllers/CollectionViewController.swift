@@ -8,27 +8,57 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeCreateViewControllerDelegate {
-    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController) {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeGeneratorViewControllerDelegate {
+    func memeGeneratorViewControllerDidCancel(_ controller: MemeGeneratorViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
-        delegate.memeArray?.append(item)
-        print("item:\(item.memedImage)")
+    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
+        delegate.memeObjArray?.append(item)
         navigationController?.popViewController(animated: true)
     }
     
-    func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
-        if let index = delegate.memeArray?.index(of: item) {
-            let meme = delegate.memeArray![index]
-            meme.memedImage = item.memedImage
-            meme.originalImage = item.originalImage
-            meme.bottomText = item.bottomText
-            meme.topText = item.topText
+    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
+        if let index = delegate.memeObjArray?.index(of: item) {
+            let memeObj = delegate.memeObjArray![index]
+            memeObj.topText = item.topText
+            memeObj.bottomText = item.bottomText
+            memeObj.originalImage = item.originalImage
+            memeObj.memedImage = item.memedImage
         }
         navigationController?.popViewController(animated: true)
+        
+//        if let index = delegate.memeObjArray?.index(of: item) {
+//            let memeObj = delegate.memeObjArray![index]
+//            memeObj.topText = item.topText
+//            memeObj.bottomText = item.bottomText
+//            memeObj.originalImage = item.originalImage
+//            memeObj.memedImage = item.memedImage
+//        }
+//        navigationController?.popViewController(animated: true)
+        
     }
+    
+//    func addMemeViewControllerDidCancel(_ controller: MemeCreateViewController) {
+//        navigationController?.popViewController(animated: true)
+//    }
+//
+//    func addMemeViewController(_ controller: MemeCreateViewController, didFinishAdding item: Meme) {
+//        delegate.memeArray?.append(item)
+//        print("item:\(item.memedImage)")
+//        navigationController?.popViewController(animated: true)
+//    }
+//
+//    func addMemeViewController(_ controller: MemeCreateViewController, didFinishEditing item: Meme) {
+//        if let index = delegate.memeArray?.index(of: item) {
+//            let meme = delegate.memeArray![index]
+//            meme.memedImage = item.memedImage
+//            meme.originalImage = item.originalImage
+//            meme.bottomText = item.bottomText
+//            meme.topText = item.topText
+//        }
+//        navigationController?.popViewController(animated: true)
+//    }
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -53,7 +83,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         if let selected = collectionView.indexPathsForSelectedItems {
             let items = selected.map { $0.item }.sorted().reversed()
             for item in items {
-                delegate.memeArray?.remove(at: item)
+                delegate.memeObjArray?.remove(at: item)
             }
             collectionView.deleteItems(at: selected)
         }
@@ -81,11 +111,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return delegate.memeArray!.count
+        if let memeObjArray = delegate.memeObjArray {
+            return memeObjArray.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let meme = delegate.memeArray![(indexPath as NSIndexPath).row]
+        let meme = delegate.memeObjArray![(indexPath as NSIndexPath).row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         cell.isEditing = isEditing
         cell.memeObj = meme
@@ -94,7 +127,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            print("boxer name:\(delegate.memeArray![indexPath.row].memedImage)")
+            print("boxer name:\(delegate.memeObjArray![indexPath.row].memedImage)")
         }
     }
     // MARK: stops collectionView from performing segue in isEditing Mode
@@ -107,16 +140,29 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddCollectionView" {
-            let controller = segue.destination as! MemeCreateViewController
-            controller.memeCreateViewControllerDelegate = self
+            let controller = segue.destination as! MemeGeneratorViewController
+            controller.memeGeneratorDelegate = self
         } else if segue.identifier == "EditCollectionView" {
-            let controller = segue.destination as! MemeCreateViewController
-            controller.memeCreateViewControllerDelegate = self
+            let controller = segue.destination as! MemeGeneratorViewController
+            controller.memeGeneratorDelegate = self
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-                controller.memeToEdit = delegate.memeArray?[indexPath.row]
+                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
             }
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AddCollectionView" {
+//            let controller = segue.destination as! MemeCreateViewController
+//            controller.memeCreateViewControllerDelegate = self
+//        } else if segue.identifier == "EditCollectionView" {
+//            let controller = segue.destination as! MemeCreateViewController
+//            controller.memeCreateViewControllerDelegate = self
+//            if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
+//                controller.memeToEdit = delegate.memeArray?[indexPath.row]
+//            }
+//        }
+//    }
     
     
 
