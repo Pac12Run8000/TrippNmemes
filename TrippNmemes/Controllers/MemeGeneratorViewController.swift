@@ -216,7 +216,7 @@ extension MemeGeneratorViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        let myCustomMeme = MemeObj.generateMemedImage(self)
+        let myCustomMeme = generateMemedImage(self)
         let avc = UIActivityViewController(activityItems: [myCustomMeme], applicationActivities: nil)
         present(avc, animated: true, completion: nil)
         avc.completionWithItemsHandler = {
@@ -230,6 +230,16 @@ extension MemeGeneratorViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    // MARK: This static function creates the memed image
+    func generateMemedImage(_ controller:UIViewController) -> UIImage {
+        UIGraphicsBeginImageContext(controller.view.frame.size)
+        controller.view.drawHierarchy(in: controller.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return memedImage
     }
     
     

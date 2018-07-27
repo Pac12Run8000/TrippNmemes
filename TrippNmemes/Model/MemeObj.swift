@@ -25,13 +25,5 @@ class MemeObj: NSObject {
     
     
     
-    // MARK: This static function creates the memed image
-    static func generateMemedImage(_ controller:UIViewController) -> UIImage {
-        UIGraphicsBeginImageContext(controller.view.frame.size)
-        controller.view.drawHierarchy(in: controller.view.frame, afterScreenUpdates: true)
-        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return memedImage
-    }
+    
 }
