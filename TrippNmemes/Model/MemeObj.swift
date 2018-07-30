@@ -13,10 +13,10 @@ import UIKit
 class MemeObj: NSObject {
     var topText:String
     var bottomText:String
-    var originalImage:UIImage
-    var memedImage:UIImage
+    var originalImage:NSData
+    var memedImage:NSData
     
-    init(topText:String, bottomText:String, originalImage:UIImage, memedImage:UIImage) {
+    init(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData) {
         self.topText = topText
         self.bottomText = bottomText
         self.originalImage = originalImage

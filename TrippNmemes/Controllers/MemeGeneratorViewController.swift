@@ -41,7 +41,7 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         if let memeObj = memeToEdit {
             topTextField.text = memeObj.topText
             bottomTextField.text = memeObj.bottomText
-            imageView.image = memeObj.originalImage
+            imageView.image = UIImage(data: memeObj.originalImage as Data)
         }
         
     }
@@ -193,17 +193,20 @@ extension MemeGeneratorViewController {
     
     
     // MARK: Save function adds the meme the [MemeObj]
-    func save(_ originalImage:UIImage, _ memedImage:UIImage) {
+    func save(_ originalImageData:NSData, _ memedImage:NSData) {
         
         if let memeToEdit = memeToEdit {
             memeToEdit.topText = topTextField.text!
             memeToEdit.bottomText = bottomTextField.text!
-            memeToEdit.originalImage = imageView.image!
+            memeToEdit.originalImage = UIImagePNGRepresentation(imageView.image!)! as NSData
             memeToEdit.memedImage = memedImage
             memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
         } else {
-            let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: memedImage)
-            memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
+            
+            let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
+            
+                memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
+            
         }
         
         
@@ -222,8 +225,8 @@ extension MemeGeneratorViewController {
         avc.completionWithItemsHandler = {
             activity, completion, items, err in
             if completion {
-                if let originalImage = self.imageView.image {
-                    self.save(originalImage, myCustomMeme)
+                if let originalImage = UIImagePNGRepresentation(self.imageView.image!) {
+                    self.save(originalImage as NSData, myCustomMeme)
                 } else {
                     print("There is no selected image.")
                 }
@@ -233,13 +236,13 @@ extension MemeGeneratorViewController {
     }
     
     // MARK: This static function creates the memed image
-    func generateMemedImage(_ controller:UIViewController) -> UIImage {
+    func generateMemedImage(_ controller:UIViewController) -> NSData {
         UIGraphicsBeginImageContext(controller.view.frame.size)
         controller.view.drawHierarchy(in: controller.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        return memedImage
+        return UIImagePNGRepresentation(memedImage)! as NSData
     }
     
     
