@@ -173,25 +173,6 @@ extension MemeGeneratorViewController {
 // MARK: This functionality is for creating a Meme
 extension MemeGeneratorViewController {
     
-    
-//    if let memeToEdit = memeToEdit {
-//        memeToEdit.memedImage = nameTextField.text!
-//        memeToEdit.topText = topTextField.text!
-//        memeToEdit.bottomText = bottomTextField.text!
-//        memeToEdit.originalImage = "Burley"
-//        memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishEditing: memeToEdit)
-//    } else {
-//    let meme = Meme()
-//    meme.memedImage = nameTextField.text!
-//    meme.bottomText = bottomTextField.text!
-//    meme.topText = topTextField.text!
-//
-//    memeCreateViewControllerDelegate?.addMemeViewController(self, didFinishAdding: meme)
-//
-//    navigationController?.popViewController(animated: true)
-//    }
-    
-    
     // MARK: Save function adds the meme the [MemeObj]
     func save(_ originalImageData:NSData, _ memedImage:NSData) {
         
@@ -202,13 +183,9 @@ extension MemeGeneratorViewController {
             memeToEdit.memedImage = memedImage
             memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
         } else {
-            
             let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
-            
                 memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
-            
         }
-        
         
 //        appdelegate.memeObjArray?.append(generatedMeme)
         
@@ -225,8 +202,8 @@ extension MemeGeneratorViewController {
         avc.completionWithItemsHandler = {
             activity, completion, items, err in
             if completion {
-                if let originalImage = UIImagePNGRepresentation(self.imageView.image!) {
-                    self.save(originalImage as NSData, myCustomMeme)
+                if let originalImageData = UIImagePNGRepresentation(self.imageView.image!) {
+                    self.save(originalImageData as NSData, myCustomMeme)
                 } else {
                     print("There is no selected image.")
                 }
