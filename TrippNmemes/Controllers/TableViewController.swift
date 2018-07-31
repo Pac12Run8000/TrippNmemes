@@ -31,7 +31,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         navigationController?.popViewController(animated: true)
     }
+    
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    var coreDataStack:CoreDataStack!
     
     @IBOutlet weak var tableView: UITableView!
 

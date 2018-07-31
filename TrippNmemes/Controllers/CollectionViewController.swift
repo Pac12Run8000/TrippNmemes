@@ -36,6 +36,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    var coreDataStack:CoreDataStack!
     
     
     override func viewDidLoad() {

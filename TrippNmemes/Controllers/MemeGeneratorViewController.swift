@@ -180,8 +180,8 @@ extension MemeGeneratorViewController {
             memeToEdit.memedImage = memedImage
             memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
         } else {
-            let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
-                memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
+            let memeToAdd = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
+                memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: memeToAdd)
         }
     }
     

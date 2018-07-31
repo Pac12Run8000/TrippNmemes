@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Array for the new modified MemeObj
     var memeObjArray: [MemeObj]?
+    
+//    let coreDataStack = CoreDataStack(modelName: "Model")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
