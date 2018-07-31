@@ -186,13 +186,6 @@ extension MemeGeneratorViewController {
             let generatedMeme = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
                 memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: generatedMeme)
         }
-        
-//        appdelegate.memeObjArray?.append(generatedMeme)
-        
-//        for item in appdelegate.memeObjArray! {
-//            print("toptext: \(item.topText), count: \(String(describing: appdelegate.memeObjArray?.count))")
-//        }
-        
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
