@@ -28,9 +28,6 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
     var memeToEdit:MemeObj? 
     
-    
-    let appdelegate = UIApplication.shared.delegate as! AppDelegate
-    
     weak var memeGeneratorDelegate:MemeGeneratorViewControllerDelegate?
     
     
