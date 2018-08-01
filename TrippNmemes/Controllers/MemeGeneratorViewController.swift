@@ -173,6 +173,9 @@ extension MemeGeneratorViewController {
     // MARK: Save function adds the meme the [MemeObj]
     func save(_ originalImageData:NSData, _ memedImage:NSData) {
         
+        // Note: var myMeme:MemeObj?
+        // myMeme = MemeObj(coreDataStack.viewContext)
+        
         if let memeToEdit = memeToEdit {
             memeToEdit.topText = topTextField.text!
             memeToEdit.bottomText = bottomTextField.text!
