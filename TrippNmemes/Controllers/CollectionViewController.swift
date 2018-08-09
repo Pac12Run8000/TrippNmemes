@@ -15,13 +15,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-        delegate.memeObjArray?.append(item)
+//        delegate.memeObjArray?.append(item)
+        CoreDataStack.sharedInstance().memeObjArray.append(item)
         navigationController?.popViewController(animated: true)
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
-        if let index = delegate.memeObjArray?.index(of: item) {
-            let memeObj = delegate.memeObjArray![index]
+//        if let index = delegate.memeObjArray?.index(of: item) {
+        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
+//            let memeObj = delegate.memeObjArray![index]
+            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
             memeObj.topText = item.topText
             memeObj.bottomText = item.bottomText
             memeObj.originalImage = item.originalImage
@@ -54,7 +57,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         if let selected = collectionView.indexPathsForSelectedItems {
             let items = selected.map { $0.item }.sorted().reversed()
             for item in items {
-                delegate.memeObjArray?.remove(at: item)
+                CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
+//                delegate.memeObjArray?.remove(at: item)
             }
             collectionView.deleteItems(at: selected)
         }
@@ -80,14 +84,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let memeObjArray = delegate.memeObjArray {
-            return memeObjArray.count
-        }
-        return 0
+//        if let memeObjArray = delegate.memeObjArray {
+//            return memeObjArray.count
+        return CoreDataStack.sharedInstance().memeObjArray.count
+//        }
+//        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let meme = delegate.memeObjArray![(indexPath as NSIndexPath).row]
+//        let meme = delegate.memeObjArray![(indexPath as NSIndexPath).row]
+        let meme = CoreDataStack.sharedInstance().memeObjArray[(indexPath as NSIndexPath).row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         cell.isEditing = isEditing
         cell.memeObj = meme
@@ -96,7 +102,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            print("boxer name:\(delegate.memeObjArray![indexPath.row].memedImage)")
+//            print("boxer name:\(delegate.memeObjArray![indexPath.row].memedImage)")
+            print("boxer name:\(CoreDataStack.sharedInstance().memeObjArray[indexPath.row].memedImage)")
         }
     }
     
@@ -116,7 +123,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             let controller = segue.destination as! MemeGeneratorViewController
             controller.memeGeneratorDelegate = self
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
+//                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
+                controller.memeToEdit = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
             }
         }
     }

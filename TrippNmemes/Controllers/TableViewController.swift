@@ -17,13 +17,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-        delegate.memeObjArray?.append(item)
+        CoreDataStack.sharedInstance().memeObjArray.append(item)
         navigationController?.popViewController(animated: true)
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
-        if let index = delegate.memeObjArray?.index(of: item) {
-            let memeObj = delegate.memeObjArray![index]
+//        if let index = delegate.memeObjArray?.index(of: item) {
+        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
+//            let memeObj = delegate.memeObjArray![index]
+            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
             memeObj.topText = item.topText
             memeObj.bottomText = item.bottomText
             memeObj.originalImage = item.originalImage
@@ -31,7 +33,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         navigationController?.popViewController(animated: true)
     }
-    
+    // TODO: get rid of delegate declaration
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var coreDataStack:CoreDataStack!
     
@@ -66,7 +68,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let controller = segue.destination as! MemeGeneratorViewController
             controller.memeGeneratorDelegate = self
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
+//                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
+                controller.memeToEdit = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
             }
         }
     }
@@ -74,7 +77,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            delegate.memeObjArray?.remove(at: indexPath.row)
+//            delegate.memeObjArray?.remove(at: indexPath.row)
+            CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         default:
             ()
@@ -84,10 +88,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let memeArray = delegate.memeObjArray {
-            return memeArray.count
-        }
-        return 0
+            return CoreDataStack.sharedInstance().memeObjArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -96,12 +97,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        if let memes = delegate.memeObjArray {
-            let meme = memes[(indexPath as NSIndexPath).row]
-
-            cell.memeObj = meme
-
-        }
+//        if let memes = delegate.memeObjArray {
+//        if let memes = CoreDataStack.sharedInstance().memeObjArray as? [MemeObj] {
+//            let meme = memes[(indexPath as NSIndexPath).row]
+//
+//            cell.memeObj = meme
+//
+//        }
+        
+        cell.memeObj = CoreDataStack.sharedInstance().memeObjArray[(indexPath as NSIndexPath).row]
         return cell
     }
     
