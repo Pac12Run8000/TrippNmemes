@@ -22,9 +22,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
-//        if let index = delegate.memeObjArray?.index(of: item) {
         if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
-//            let memeObj = delegate.memeObjArray![index]
             let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
             memeObj.topText = item.topText
             memeObj.bottomText = item.bottomText
@@ -68,7 +66,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let controller = segue.destination as! MemeGeneratorViewController
             controller.memeGeneratorDelegate = self
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-//                controller.memeToEdit = delegate.memeObjArray?[indexPath.row]
                 controller.memeToEdit = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
             }
         }
@@ -77,7 +74,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-//            delegate.memeObjArray?.remove(at: indexPath.row)
+
             CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         default:
@@ -97,13 +94,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-//        if let memes = delegate.memeObjArray {
-//        if let memes = CoreDataStack.sharedInstance().memeObjArray as? [MemeObj] {
-//            let meme = memes[(indexPath as NSIndexPath).row]
-//
-//            cell.memeObj = meme
-//
-//        }
         
         cell.memeObj = CoreDataStack.sharedInstance().memeObjArray[(indexPath as NSIndexPath).row]
         return cell
