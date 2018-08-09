@@ -10,30 +10,22 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MemeGeneratorViewControllerDelegate {
     
-    
-    
     func memeGeneratorViewControllerDidCancel(_ controller: MemeGeneratorViewController) {
         navigationController?.popViewController(animated: true)
     }
 
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-        CoreDataStack.sharedInstance().memeObjArray.append(item)
+        addMeme(item: item)
         navigationController?.popViewController(animated: true)
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
-        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
-            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
-            memeObj.topText = item.topText
-            memeObj.bottomText = item.bottomText
-            memeObj.originalImage = item.originalImage
-            memeObj.memedImage = item.memedImage
-        }
+        editMeme(item: item)
         navigationController?.popViewController(animated: true)
     }
-    // TODO: get rid of delegate declaration
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    var coreDataStack:CoreDataStack!
+    
+
+
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -58,31 +50,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        print(delegate.memeArray![0] == delegate.memeArray![3])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddTableView" {
-            let controller = segue.destination as! MemeGeneratorViewController
-            controller.memeGeneratorDelegate = self
-        } else if segue.identifier == "EditTableView" {
-            let controller = segue.destination as! MemeGeneratorViewController
-            controller.memeGeneratorDelegate = self
-            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.memeToEdit = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-
-            CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
+            deleteMeme(indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
         default:
             ()
         }
     }
-
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return CoreDataStack.sharedInstance().memeObjArray.count
@@ -98,9 +74,56 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.memeObj = CoreDataStack.sharedInstance().memeObjArray[(indexPath as NSIndexPath).row]
         return cell
     }
+}
+
+
+
+// MARK: This is the add, edit and delete functionality
+extension TableViewController {
     
+    
+    // MARK: deletion of memes
+    func deleteMeme(indexPath:IndexPath) {
+        CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
+    }
+    
+    // MARK: adding a meme
+    func addMeme(item:MemeObj) {
+        CoreDataStack.sharedInstance().memeObjArray.append(item)
+    }
+    
+    // MARK: editing a meme
+    func editMeme(item:MemeObj) {
+        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
+            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
+            memeObj.topText = item.topText
+            memeObj.bottomText = item.bottomText
+            memeObj.originalImage = item.originalImage
+            memeObj.memedImage = item.memedImage
+        }
+    }
+    
+    
+}
 
 
+
+// MARK: This is where the prepareForSegue functionality is
+extension TableViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddTableView" {
+            let controller = segue.destination as! MemeGeneratorViewController
+            controller.memeGeneratorDelegate = self
+        } else if segue.identifier == "EditTableView" {
+            let controller = segue.destination as! MemeGeneratorViewController
+            controller.memeGeneratorDelegate = self
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.memeToEdit = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
+            }
+        }
+    }
+    
 }
 
 // Meme Equatable definition syntax

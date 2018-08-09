@@ -15,19 +15,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-        CoreDataStack.sharedInstance().memeObjArray.append(item)
+        addMeme(item: item)
         navigationController?.popViewController(animated: true)
     }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
-
-        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
-            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
-            memeObj.topText = item.topText
-            memeObj.bottomText = item.bottomText
-            memeObj.originalImage = item.originalImage
-            memeObj.memedImage = item.memedImage
-        }
+        editMeme(item: item)
         navigationController?.popViewController(animated: true)
     }
     
@@ -36,8 +29,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var addBarButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    var coreDataStack:CoreDataStack!
+    
     
     
     override func viewDidLoad() {
@@ -52,13 +44,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @IBAction func deleteSelected() {
-        if let selected = collectionView.indexPathsForSelectedItems {
-            let items = selected.map { $0.item }.sorted().reversed()
-            for item in items {
-                CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
-            }
-            collectionView.deleteItems(at: selected)
-        }
+        deleteMemes()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -110,6 +96,32 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
 // MARK: The functionality for adding, editing, deleting memes in CoreData
 extension CollectionViewController {
+    // MARK: Add a meme
+    func addMeme(item:MemeObj) {
+        CoreDataStack.sharedInstance().memeObjArray.append(item)
+    }
+    
+    // MARK: Edit a meme
+    func editMeme(item:MemeObj) {
+        if let index = CoreDataStack.sharedInstance().memeObjArray.index(of: item) {
+            let memeObj = CoreDataStack.sharedInstance().memeObjArray[index]
+            memeObj.topText = item.topText
+            memeObj.bottomText = item.bottomText
+            memeObj.originalImage = item.originalImage
+            memeObj.memedImage = item.memedImage
+        }
+    }
+    
+    // MARK: Delete memes
+    func deleteMemes() {
+        if let selected = collectionView.indexPathsForSelectedItems {
+            let items = selected.map { $0.item }.sorted().reversed()
+            for item in items {
+                CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
+            }
+            collectionView.deleteItems(at: selected)
+        }
+    }
     
 }
 
