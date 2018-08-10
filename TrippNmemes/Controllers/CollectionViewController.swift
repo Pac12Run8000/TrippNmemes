@@ -111,7 +111,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 extension CollectionViewController {
     // MARK: Add a meme
     func addMeme(item:(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData)) {
-//        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
         let addedMeme = MemeObj(context: delegate.coreDataStack.viewContext)
         addedMeme.topText = item.topText
         addedMeme.bottomText = item.bottomText
@@ -121,7 +120,6 @@ extension CollectionViewController {
         if let _ = try? delegate.coreDataStack.viewContext.save() {
             collectionView.reloadData()
         }
-//        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
     }
     
     // MARK: Edit a meme
@@ -141,32 +139,6 @@ extension CollectionViewController {
         }
     }
     
-    
-    
-//    func deleteMeme(at indexPath:IndexPath) {
-//        let memeToDelete = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
-//        delegate.coreDataStack.viewContext.delete(memeToDelete)
-//        do {
-//            try delegate.coreDataStack.viewContext.save()
-//            CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } catch {
-//            print("error:\(error.localizedDescription)")
-//        }
-//    }
-    
-    
-//    if let pinToDelete = pinImages[indexPath.row] as? PinImage {
-//        pinImages.remove(at: indexPath.row)
-//        collectionView.deleteItems(at: [indexPath])
-//        getCoreDataStack().context.delete(pinToDelete)
-//        do {
-//            try getCoreDataStack().context.save()
-//        } catch {
-//            print("There was an error while saving context")
-//        }
-//    }
-    
     // MARK: Delete memes
     func deleteMemes() {
         if let selected = collectionView.indexPathsForSelectedItems {
@@ -181,13 +153,6 @@ extension CollectionViewController {
                 collectionView.deleteItems(at: selected)
             }
         }
-//        if let selected = collectionView.indexPathsForSelectedItems {
-//            let items = selected.map { $0.item }.sorted().reversed()
-//            for item in items {
-//                CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
-//            }
-//            collectionView.deleteItems(at: selected)
-//        }
     }
     
 }
