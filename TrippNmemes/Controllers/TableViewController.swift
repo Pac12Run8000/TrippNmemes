@@ -66,7 +66,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch editingStyle {
         case .delete:
             deleteMeme(at: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
         default:
             ()
         }
@@ -96,7 +96,6 @@ extension TableViewController {
     
     // MARK: deletion of memes
     func deleteMeme(at indexPath:IndexPath) {
-        
         let memeToDelete = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
         delegate.coreDataStack.viewContext.delete(memeToDelete)
         do {
@@ -106,15 +105,10 @@ extension TableViewController {
         } catch {
             print("error:\(error.localizedDescription)")
         }
-        
-        
-
-//        CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
     }
     
     // MARK: adding a meme
     func addMeme(item:(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData)) {
-//        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
         let addedMeme = MemeObj(context: delegate.coreDataStack.viewContext)
         addedMeme.topText = item.topText
         addedMeme.bottomText = item.bottomText
@@ -127,7 +121,6 @@ extension TableViewController {
         } catch let err as NSError {
             print("There was an error:\(err.localizedDescription)")
         }
-//        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
     }
     
     // MARK: editing a meme
