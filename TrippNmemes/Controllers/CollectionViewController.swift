@@ -10,14 +10,20 @@ import UIKit
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeGeneratorViewControllerDelegate {
     
+    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: (topText: String, bottomText: String, originalImage: NSData, memedImage: NSData)) {
+        addMeme(item: item)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     func memeGeneratorViewControllerDidCancel(_ controller: MemeGeneratorViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-        addMeme(item: item)
-        navigationController?.popViewController(animated: true)
-    }
+//    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
+//        addMeme(item: item)
+//        navigationController?.popViewController(animated: true)
+//    }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
         editMeme(item: item)
@@ -97,8 +103,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 // MARK: The functionality for adding, editing, deleting memes in CoreData
 extension CollectionViewController {
     // MARK: Add a meme
-    func addMeme(item:MemeObj) {
-        CoreDataStack.sharedInstance().memeObjArray.append(item)
+    func addMeme(item:(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData)) {
+        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
+        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
     }
     
     // MARK: Edit a meme

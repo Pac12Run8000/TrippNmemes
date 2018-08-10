@@ -12,7 +12,7 @@ import UIKit
 protocol MemeGeneratorViewControllerDelegate:class {
     
     func memeGeneratorViewControllerDidCancel(_ controller:MemeGeneratorViewController)
-    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishAdding item:MemeObj)
+    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishAdding item:(topText: String, bottomText: String, originalImage: NSData, memedImage: NSData))
     func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishEditing item:MemeObj)
     
 }
@@ -183,7 +183,7 @@ extension MemeGeneratorViewController {
             memeToEdit.memedImage = memedImage
             memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
         } else {
-            let memeToAdd = MemeObj(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
+            let memeToAdd = (topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)
                 memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishAdding: memeToAdd)
         }
     }
