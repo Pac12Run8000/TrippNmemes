@@ -20,11 +20,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         navigationController?.popViewController(animated: true)
     }
     
-//    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-//        addMeme(item: item)
-//        navigationController?.popViewController(animated: true)
-//    }
-    
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
         editMeme(item: item)
         navigationController?.popViewController(animated: true)

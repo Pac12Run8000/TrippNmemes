@@ -9,20 +9,15 @@
 import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MemeGeneratorViewControllerDelegate {
-    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: (topText: String, bottomText: String, originalImage: NSData, memedImage: NSData)) {
-        addMeme(item: item)
-        navigationController?.popViewController(animated: true)
-    }
-    
     
     func memeGeneratorViewControllerDidCancel(_ controller: MemeGeneratorViewController) {
         navigationController?.popViewController(animated: true)
     }
-
-//    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: MemeObj) {
-//        addMeme(item: item)
-//        navigationController?.popViewController(animated: true)
-//    }
+    
+    func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishAdding item: (topText: String, bottomText: String, originalImage: NSData, memedImage: NSData)) {
+        addMeme(item: item)
+        navigationController?.popViewController(animated: true)
+    }
     
     func memeGeneratorViewController(_ controller: MemeGeneratorViewController, didFinishEditing item: MemeObj) {
         editMeme(item: item)
