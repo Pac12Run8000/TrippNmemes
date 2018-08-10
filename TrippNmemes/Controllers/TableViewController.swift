@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MemeGeneratorViewControllerDelegate {
     
@@ -25,9 +26,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
 
-
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         tableView.reloadData()
         
+        let fetchRequest:NSFetchRequest<MemeObj> = MemeObj.fetchRequest()
+        let sortDesc = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDesc]
+        
+        if let result = try? delegate.coreDataStack.viewContext.fetch(fetchRequest) {
+            CoreDataStack.sharedInstance().memeObjArray = result
+            tableView.reloadData()
+        }
+        
 //        for item in delegate.memeObjArray! {
 //            print("meme: \(item.topText)\n")
 //        }
@@ -53,7 +65,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            deleteMeme(indexPath: indexPath)
+            deleteMeme(at: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
         default:
             ()
@@ -83,14 +95,39 @@ extension TableViewController {
     
     
     // MARK: deletion of memes
-    func deleteMeme(indexPath:IndexPath) {
-        CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
+    func deleteMeme(at indexPath:IndexPath) {
+        
+        let memeToDelete = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
+        delegate.coreDataStack.viewContext.delete(memeToDelete)
+        do {
+            try delegate.coreDataStack.viewContext.save()
+            CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } catch {
+            print("error:\(error.localizedDescription)")
+        }
+        
+        
+
+//        CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
     }
     
     // MARK: adding a meme
     func addMeme(item:(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData)) {
-        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
-        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
+//        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
+        let addedMeme = MemeObj(context: delegate.coreDataStack.viewContext)
+        addedMeme.topText = item.topText
+        addedMeme.bottomText = item.bottomText
+        addedMeme.originalImage = item.originalImage as Data
+        addedMeme.memedImage = item.memedImage as Data
+        addedMeme.creationDate = Date()
+        do {
+            try delegate.coreDataStack.viewContext.save()
+            tableView.reloadData()
+        } catch let err as NSError {
+            print("There was an error:\(err.localizedDescription)")
+        }
+//        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
     }
     
     // MARK: editing a meme
@@ -101,6 +138,9 @@ extension TableViewController {
             memeObj.bottomText = item.bottomText
             memeObj.originalImage = item.originalImage
             memeObj.memedImage = item.memedImage
+            if let _ = try? delegate.coreDataStack.viewContext.save() {
+                
+            }
         }
     }
     

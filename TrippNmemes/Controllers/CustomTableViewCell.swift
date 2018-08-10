@@ -21,7 +21,9 @@ class CustomTableViewCell: UITableViewCell {
     
     var memeObj:MemeObj! {
         didSet {
-           customImage.image = UIImage(data: memeObj.originalImage as Data)
+            if let originalImage = memeObj.originalImage as Data? {
+                customImage.image = UIImage(data: originalImage)
+            }
             topText.text = memeObj.topText
             bottomText.text = memeObj.bottomText
             

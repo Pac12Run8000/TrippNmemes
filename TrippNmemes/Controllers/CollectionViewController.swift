@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MemeGeneratorViewControllerDelegate {
     
@@ -30,7 +31,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var addBarButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
-    
+
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     
     override func viewDidLoad() {
@@ -64,7 +66,17 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
+        
+        let fetchRequest:NSFetchRequest<MemeObj> = MemeObj.fetchRequest()
+        let sortDesc = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDesc]
+        
+        if let result = try? delegate.coreDataStack.viewContext.fetch(fetchRequest) {
+            CoreDataStack.sharedInstance().memeObjArray = result
+            collectionView.reloadData()
+        }
+        
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,9 +93,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isEditing {
-            print("boxer name:\(CoreDataStack.sharedInstance().memeObjArray[indexPath.row].memedImage)")
-        }
+//        if !isEditing {
+//            print("boxer name:\(CoreDataStack.sharedInstance().memeObjArray[indexPath.row].memedImage)")
+//        }
     }
     
     // MARK: stops collectionView from performing segue in isEditing Mode
@@ -99,8 +111,17 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 extension CollectionViewController {
     // MARK: Add a meme
     func addMeme(item:(topText:String, bottomText:String, originalImage:NSData, memedImage:NSData)) {
-        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
-        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
+//        let addedMeme = MemeObj(topText: item.topText, bottomText: item.bottomText, originalImage: item.originalImage, memedImage: item.memedImage)
+        let addedMeme = MemeObj(context: delegate.coreDataStack.viewContext)
+        addedMeme.topText = item.topText
+        addedMeme.bottomText = item.bottomText
+        addedMeme.originalImage = item.originalImage as Data
+        addedMeme.memedImage = item.memedImage as Data
+        addedMeme.creationDate = Date()
+        if let _ = try? delegate.coreDataStack.viewContext.save() {
+            collectionView.reloadData()
+        }
+//        CoreDataStack.sharedInstance().memeObjArray.append(addedMeme)
     }
     
     // MARK: Edit a meme
@@ -111,18 +132,62 @@ extension CollectionViewController {
             memeObj.bottomText = item.bottomText
             memeObj.originalImage = item.originalImage
             memeObj.memedImage = item.memedImage
+            do {
+                try delegate.coreDataStack.viewContext.save()
+                collectionView.reloadData()
+            } catch let err as NSError {
+                print("There was an error:\(err.localizedDescription)")
+            }
         }
     }
+    
+    
+    
+//    func deleteMeme(at indexPath:IndexPath) {
+//        let memeToDelete = CoreDataStack.sharedInstance().memeObjArray[indexPath.row]
+//        delegate.coreDataStack.viewContext.delete(memeToDelete)
+//        do {
+//            try delegate.coreDataStack.viewContext.save()
+//            CoreDataStack.sharedInstance().memeObjArray.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } catch {
+//            print("error:\(error.localizedDescription)")
+//        }
+//    }
+    
+    
+//    if let pinToDelete = pinImages[indexPath.row] as? PinImage {
+//        pinImages.remove(at: indexPath.row)
+//        collectionView.deleteItems(at: [indexPath])
+//        getCoreDataStack().context.delete(pinToDelete)
+//        do {
+//            try getCoreDataStack().context.save()
+//        } catch {
+//            print("There was an error while saving context")
+//        }
+//    }
     
     // MARK: Delete memes
     func deleteMemes() {
         if let selected = collectionView.indexPathsForSelectedItems {
             let items = selected.map { $0.item }.sorted().reversed()
+            
             for item in items {
+                let memeToDelete = CoreDataStack.sharedInstance().memeObjArray[item]
+                delegate.coreDataStack.viewContext.delete(memeToDelete)
                 CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
             }
-            collectionView.deleteItems(at: selected)
+            if let _ = try? delegate.coreDataStack.viewContext.save() {
+                collectionView.deleteItems(at: selected)
+            }
         }
+//        if let selected = collectionView.indexPathsForSelectedItems {
+//            let items = selected.map { $0.item }.sorted().reversed()
+//            for item in items {
+//                CoreDataStack.sharedInstance().memeObjArray.remove(at: item)
+//            }
+//            collectionView.deleteItems(at: selected)
+//        }
     }
     
 }

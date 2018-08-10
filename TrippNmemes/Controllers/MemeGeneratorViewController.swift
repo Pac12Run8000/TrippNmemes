@@ -38,7 +38,7 @@ class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
         if let memeObj = memeToEdit {
             topTextField.text = memeObj.topText
             bottomTextField.text = memeObj.bottomText
-            imageView.image = UIImage(data: memeObj.originalImage as Data)
+            imageView.image = UIImage(data: memeObj.originalImage as! Data)
         }
         
     }
@@ -179,8 +179,8 @@ extension MemeGeneratorViewController {
         if let memeToEdit = memeToEdit {
             memeToEdit.topText = topTextField.text!
             memeToEdit.bottomText = bottomTextField.text!
-            memeToEdit.originalImage = UIImagePNGRepresentation(imageView.image!)! as NSData
-            memeToEdit.memedImage = memedImage
+            memeToEdit.originalImage = UIImagePNGRepresentation(imageView.image!)! as NSData as Data
+            memeToEdit.memedImage = memedImage as Data
             memeGeneratorDelegate?.memeGeneratorViewController(self, didFinishEditing: memeToEdit)
         } else {
             let memeToAdd = (topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImageData, memedImage: memedImage as NSData)

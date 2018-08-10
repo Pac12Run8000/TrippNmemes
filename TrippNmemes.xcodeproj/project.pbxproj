@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		091DDF8A2110D2A600A01AC0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091DDF892110D2A600A01AC0 /* CoreDataStack.swift */; };
+		091DDFBC211D871E00A01AC0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 091DDFBA211D871E00A01AC0 /* Model.xcdatamodeld */; };
+		091DDFBF211D886500A01AC0 /* MemeObj+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */; };
 		09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */; };
-		0999506120FE3B14005D83B4 /* MemeObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999506020FE3B14005D83B4 /* MemeObj.swift */; };
+		0999506120FE3B14005D83B4 /* MemeObj_depricated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999506020FE3B14005D83B4 /* MemeObj_depricated.swift */; };
 		09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634720F3A546002605F5 /* AppDelegate.swift */; };
 		09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634920F3A546002605F5 /* TableViewController.swift */; };
 		09A4634D20F3A546002605F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A4634B20F3A546002605F5 /* Main.storyboard */; };
@@ -22,8 +24,10 @@
 
 /* Begin PBXFileReference section */
 		091DDF892110D2A600A01AC0 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		091DDFBB211D871E00A01AC0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemeObj+Extensions.swift"; sourceTree = "<group>"; };
 		09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorViewController.swift; sourceTree = "<group>"; };
-		0999506020FE3B14005D83B4 /* MemeObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeObj.swift; sourceTree = "<group>"; };
+		0999506020FE3B14005D83B4 /* MemeObj_depricated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeObj_depricated.swift; sourceTree = "<group>"; };
 		09A4634420F3A546002605F5 /* TrippNmemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrippNmemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A4634720F3A546002605F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A4634920F3A546002605F5 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		091DDFBD211D882300A01AC0 /* Managed Object Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */,
+			);
+			path = "Managed Object Extensions";
+			sourceTree = "<group>";
+		};
 		09A4633B20F3A546002605F5 = {
 			isa = PBXGroup;
 			children = (
@@ -92,8 +104,10 @@
 		09A4635D20F3B584002605F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0999506020FE3B14005D83B4 /* MemeObj.swift */,
+				091DDFBD211D882300A01AC0 /* Managed Object Extensions */,
+				0999506020FE3B14005D83B4 /* MemeObj_depricated.swift */,
 				091DDF892110D2A600A01AC0 /* CoreDataStack.swift */,
+				091DDFBA211D871E00A01AC0 /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,7 +189,9 @@
 				09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */,
 				09A4636120F530C9002605F5 /* CustomTableViewCell.swift in Sources */,
 				09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */,
-				0999506120FE3B14005D83B4 /* MemeObj.swift in Sources */,
+				091DDFBF211D886500A01AC0 /* MemeObj+Extensions.swift in Sources */,
+				091DDFBC211D871E00A01AC0 /* Model.xcdatamodeld in Sources */,
+				0999506120FE3B14005D83B4 /* MemeObj_depricated.swift in Sources */,
 				09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */,
 				091DDF8A2110D2A600A01AC0 /* CoreDataStack.swift in Sources */,
 			);
@@ -366,6 +382,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		091DDFBA211D871E00A01AC0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				091DDFBB211D871E00A01AC0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 091DDFBB211D871E00A01AC0 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 09A4633C20F3A546002605F5 /* Project object */;
 }
