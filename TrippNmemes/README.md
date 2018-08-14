@@ -18,6 +18,5 @@ How to use TrippNmemes meme generator
 <img src="images/collectionView.png" height="400">
 2. Click on the plus button in the upper right corner.
 
-
 3. You will get a blank screen with the text that reads "TOP" at the top and "BOTTOM" at the bottom.
 <img src="images/addAnImage.png" height="400">
