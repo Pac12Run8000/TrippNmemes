@@ -19,3 +19,4 @@ How to use TrippNmemes meme generator
 2. Click on the plus button in the upper right corner.<br />
 3. You will get a blank screen with the text that reads "TOP" at the top and "BOTTOM" at the bottom.
 <img src="images/addAnImage.png" height="400">
+4. Click on the text on either the top or bottom and type in what you want the meme text to say.
