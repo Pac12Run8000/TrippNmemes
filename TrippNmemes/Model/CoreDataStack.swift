@@ -40,5 +40,5 @@ class CoreDataStack {
         return Singleton.sharedInstance
     }
     
-    //This is a test
+   
 }
