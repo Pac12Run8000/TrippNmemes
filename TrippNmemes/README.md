@@ -1,3 +1,11 @@
-#  Test
+#  TrippNmemes
+Licensing information: Read License
 
-<img src="images/screenShot1.png" height="600" >
+Author and Contributors List
+-----
+Norbert Grover
+
+All discovered bugs can be forewarded to sosagrover1987@gmail.com
+
+Project Repository is at:
+-----
