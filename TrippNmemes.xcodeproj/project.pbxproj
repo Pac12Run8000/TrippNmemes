@@ -10,6 +10,8 @@
 		091DDF8A2110D2A600A01AC0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091DDF892110D2A600A01AC0 /* CoreDataStack.swift */; };
 		091DDFBC211D871E00A01AC0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 091DDFBA211D871E00A01AC0 /* Model.xcdatamodeld */; };
 		091DDFBF211D886500A01AC0 /* MemeObj+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */; };
+		091DDFF42122DB1400A01AC0 /* tableView.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF32122DB1400A01AC0 /* tableView.png */; };
+		091DDFF62122DB1A00A01AC0 /* collectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF52122DB1A00A01AC0 /* collectionView.png */; };
 		09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */; };
 		09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634720F3A546002605F5 /* AppDelegate.swift */; };
 		09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634920F3A546002605F5 /* TableViewController.swift */; };
@@ -25,6 +27,9 @@
 		091DDF892110D2A600A01AC0 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		091DDFBB211D871E00A01AC0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemeObj+Extensions.swift"; sourceTree = "<group>"; };
+		091DDFEE21224B4700A01AC0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		091DDFF32122DB1400A01AC0 /* tableView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableView.png; sourceTree = "<group>"; };
+		091DDFF52122DB1A00A01AC0 /* collectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionView.png; sourceTree = "<group>"; };
 		09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorViewController.swift; sourceTree = "<group>"; };
 		09A4634420F3A546002605F5 /* TrippNmemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrippNmemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A4634720F3A546002605F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +62,15 @@
 			path = "Managed Object Extensions";
 			sourceTree = "<group>";
 		};
+		091DDFF02122B92D00A01AC0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				091DDFF32122DB1400A01AC0 /* tableView.png */,
+				091DDFF52122DB1A00A01AC0 /* collectionView.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		09A4633B20F3A546002605F5 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +90,7 @@
 		09A4634620F3A546002605F5 /* TrippNmemes */ = {
 			isa = PBXGroup;
 			children = (
+				091DDFF02122B92D00A01AC0 /* images */,
 				09A4635D20F3B584002605F5 /* Model */,
 				09A4634720F3A546002605F5 /* AppDelegate.swift */,
 				09A4635C20F3AB12002605F5 /* Controllers */,
@@ -83,6 +98,7 @@
 				09A4634E20F3A546002605F5 /* Assets.xcassets */,
 				09A4635020F3A546002605F5 /* LaunchScreen.storyboard */,
 				09A4635320F3A546002605F5 /* Info.plist */,
+				091DDFEE21224B4700A01AC0 /* README.md */,
 			);
 			path = TrippNmemes;
 			sourceTree = "<group>";
@@ -169,8 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A4635220F3A546002605F5 /* LaunchScreen.storyboard in Resources */,
+				091DDFF62122DB1A00A01AC0 /* collectionView.png in Resources */,
 				09A4634F20F3A546002605F5 /* Assets.xcassets in Resources */,
 				09A4634D20F3A546002605F5 /* Main.storyboard in Resources */,
+				091DDFF42122DB1400A01AC0 /* tableView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
