@@ -25,4 +25,7 @@ How to use TrippNmemes meme generator
 <img src="images/createMeme.png" height="400">
 <img src="images/createMeme1.png" height="400">
 <img src="images/createMeme2.png" height="400">
-
+7. The will then return you to the tableView with a new meme in the top cell. <br/>
+8. At this point, if you want to delete the meme, you can swipe left. Or if you have selected the collectionView tab, you can select edit and then designate the items that you want to delete and then press delete.
+<img src="images/table.png" height="400">
+<img src="images/collection.png" height="400">
