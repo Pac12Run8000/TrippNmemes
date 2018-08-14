@@ -12,6 +12,10 @@
 		091DDFBF211D886500A01AC0 /* MemeObj+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091DDFBE211D886500A01AC0 /* MemeObj+Extensions.swift */; };
 		091DDFF42122DB1400A01AC0 /* tableView.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF32122DB1400A01AC0 /* tableView.png */; };
 		091DDFF62122DB1A00A01AC0 /* collectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF52122DB1A00A01AC0 /* collectionView.png */; };
+		091DDFF82122E1E000A01AC0 /* addAnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF72122E1E000A01AC0 /* addAnImage.png */; };
+		091DDFFA2122EDB700A01AC0 /* createMeme.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFF92122EDB700A01AC0 /* createMeme.png */; };
+		091DDFFC2122EDBC00A01AC0 /* createMeme1.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFFB2122EDBC00A01AC0 /* createMeme1.png */; };
+		091DDFFE2122EDC200A01AC0 /* createMeme2.png in Resources */ = {isa = PBXBuildFile; fileRef = 091DDFFD2122EDC200A01AC0 /* createMeme2.png */; };
 		09537C5A20FAE5DD00A4EC3D /* MemeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */; };
 		09A4634820F3A546002605F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634720F3A546002605F5 /* AppDelegate.swift */; };
 		09A4634A20F3A546002605F5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A4634920F3A546002605F5 /* TableViewController.swift */; };
@@ -30,6 +34,10 @@
 		091DDFEE21224B4700A01AC0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		091DDFF32122DB1400A01AC0 /* tableView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableView.png; sourceTree = "<group>"; };
 		091DDFF52122DB1A00A01AC0 /* collectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionView.png; sourceTree = "<group>"; };
+		091DDFF72122E1E000A01AC0 /* addAnImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addAnImage.png; sourceTree = "<group>"; };
+		091DDFF92122EDB700A01AC0 /* createMeme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMeme.png; sourceTree = "<group>"; };
+		091DDFFB2122EDBC00A01AC0 /* createMeme1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMeme1.png; sourceTree = "<group>"; };
+		091DDFFD2122EDC200A01AC0 /* createMeme2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMeme2.png; sourceTree = "<group>"; };
 		09537C5920FAE5DD00A4EC3D /* MemeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorViewController.swift; sourceTree = "<group>"; };
 		09A4634420F3A546002605F5 /* TrippNmemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrippNmemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A4634720F3A546002605F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +73,10 @@
 		091DDFF02122B92D00A01AC0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				091DDFF72122E1E000A01AC0 /* addAnImage.png */,
+				091DDFF92122EDB700A01AC0 /* createMeme.png */,
+				091DDFFB2122EDBC00A01AC0 /* createMeme1.png */,
+				091DDFFD2122EDC200A01AC0 /* createMeme2.png */,
 				091DDFF32122DB1400A01AC0 /* tableView.png */,
 				091DDFF52122DB1A00A01AC0 /* collectionView.png */,
 			);
@@ -186,6 +198,10 @@
 			files = (
 				09A4635220F3A546002605F5 /* LaunchScreen.storyboard in Resources */,
 				091DDFF62122DB1A00A01AC0 /* collectionView.png in Resources */,
+				091DDFF82122E1E000A01AC0 /* addAnImage.png in Resources */,
+				091DDFFC2122EDBC00A01AC0 /* createMeme1.png in Resources */,
+				091DDFFA2122EDB700A01AC0 /* createMeme.png in Resources */,
+				091DDFFE2122EDC200A01AC0 /* createMeme2.png in Resources */,
 				09A4634F20F3A546002605F5 /* Assets.xcassets in Resources */,
 				09A4634D20F3A546002605F5 /* Main.storyboard in Resources */,
 				091DDFF42122DB1400A01AC0 /* tableView.png in Resources */,

@@ -19,4 +19,10 @@ How to use TrippNmemes meme generator
 2. Click on the plus button in the upper right corner.<br />
 3. You will get a blank screen with the text that reads "TOP" at the top and "BOTTOM" at the bottom.
 <img src="images/addAnImage.png" height="400">
-4. Click on the text on either the top or bottom and type in what you want the meme text to say.
+4. Click on the text on either the top or bottom and type in what you want the meme text to say.<br />
+5. Click on the directory or camera icon in the top right corner and select a photo for your meme.<br/>
+6. Select an action and the photo will be saved where you designated as well as the meme being persisted in the app.
+<img src="images/createMeme.png" height="400">
+<img src="images/createMeme1.png" height="400">
+<img src="images/createMeme2.png" height="400">
+
