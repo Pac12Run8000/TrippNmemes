@@ -1,3 +1,3 @@
 #  Test
 
-<img src="images/screenShot1.png" height="150" width="80">
+<img src="images/screenShot1.png" height="200" width="110">
