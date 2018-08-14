@@ -1,3 +1,3 @@
 #  Test
 
-![](images/screenShot1.pnf)
+<img src="images/screenShot1.png">
