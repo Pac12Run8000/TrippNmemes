@@ -9,13 +9,7 @@
 import UIKit
 
 
-protocol MemeGeneratorViewControllerDelegate:class {
-    
-    func memeGeneratorViewControllerDidCancel(_ controller:MemeGeneratorViewController)
-    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishAdding item:(topText: String, bottomText: String, originalImage: NSData, memedImage: NSData))
-    func memeGeneratorViewController(_ controller:MemeGeneratorViewController, didFinishEditing item:MemeObj)
-    
-}
+
 
 class MemeGeneratorViewController: UIViewController, UITextFieldDelegate {
     
