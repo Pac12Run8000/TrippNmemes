@@ -17,6 +17,9 @@ TripNmemes is an iOS application that was developed specifically for the iPhone.
 
 Built with
 ======
+Swift
+XCode
+Coredata
 
 TrippNMemes was developed using delegate protocol pattern. All original or memed images are displayed in both TableView and CollectionView. 
 
